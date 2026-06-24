@@ -120,3 +120,34 @@ SELECt c2 as keys,AVG(CAST(c1 AS REAL))as avg_danceability
  FROM data 
  GROUP BY keys
  HAVING  AVG(CAST(c1 AS REAL)) > 0.70;
+ 
+ --Find songs with energy higher than the dataset average
+ SELECT CAST(c2 as REAL) as energy 
+FROM data 
+WHERE CAST(c2 AS REAL) > 
+(
+  SELECT AVG(CAST(C2 as REAL)) as avg_energy 
+  FROM data 
+  );
+  
+--Find songs with tempo higher than average
+SELECT CAST(c11 as REAL) as tempo
+FROM data 
+WHERE CAST(c11 AS REAL) > 
+(
+  SELECT AVG(CAST(C11 as REAL)) as avg_temp0
+  FROM data 
+  );
+  
+--Show songs and classify them as Above average energy  and below Average Energy 
+SELECT CAST(c2 as REAL) AS energy ,
+CASE WHEN  CAST(C2 as REAL) > 
+(
+  SELECT AVG(CAST(C2 AS REAL)) 
+  FROM data
+  
+ )
+ THEN 'Above_avg_energy'
+ ELSE 'Below_avg_energy'
+ END AS energy_status
+ FROM data;
