@@ -78,3 +78,45 @@ SELECT CAST(c11 as real) as tempo
 From data
 ORDER BY tempo asc
 LIMIT 10;
+
+--Classify songs as High energy, Medium energy and Low energy where high energy (>0.7),Medium energy (0.4-0.7) and low energy (<0.4)
+SElECT CAST(C2 AS REAL) AS energy_value,
+CASE 
+    WHEN CAST(C2 AS Real) > 0.7 THEN 'High_energy'
+    WHEN CAST(c2 AS Real) >0.4 and CAST(C2 AS REAL)<=0.7 THEN '	Medium_energy'
+    ELSE 'Low_Energy'
+    END AS Energy_status 
+ FROM data;
+ 
+ --Count how many songs belong to each energy category 
+ SElECT CAST(C2 AS REAL) AS energy_value,
+CASE 
+    WHEN CAST(C2 AS Real) > 0.7 THEN 'High_energy'
+    WHEN CAST(c2 AS Real) >0.4 AND CAST(C2 AS REAL)<=0.7 THEN '	Medium_energy'
+    ELSE 'Low_Energy'
+    END AS Energy_status ,
+    COUNT(*) AS TOTAL_SONGS 
+ FROM data
+ group By Energy_status;
+ 
+ --classify song as tempo 
+SELECT cast(c11 as Real) as tempo ,
+CASE
+    when CAST(C11 AS real)> 100 THEN 'fast_song'
+    WHEN CAST(C11 AS REAL) >=80 and CAST (C11 AS real) <100 THEN 'medium_song'
+    ELSE 'slow_song '
+    END AS song_type
+From data;
+
+--Show keys that have more than 10 songs 
+SELECt CAST(c3 AS REAL) as keys,
+       COUNT(*) AS Total_songs
+FROM data
+GROUP BY keys
+HAVING COUNT(*)>10
+
+--Show keys whose average danceability is above 0.70
+SELECt c2 as keys,AVG(CAST(c1 AS REAL))as avg_danceability 
+ FROM data 
+ GROUP BY keys
+ HAVING  AVG(CAST(c1 AS REAL)) > 0.70;
