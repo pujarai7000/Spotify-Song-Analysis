@@ -1,0 +1,42 @@
+#Spotify Song Analysis 
+
+##Project Overview
+This project analyzes a Spotify song dataset using SQL in SQLite.This analysis answers common business
+questions using SQL  queries and demonstrates skills in filtering, aggregation,sorting , grouping and data exploration.
+
+
+##Tools Used
+-SQL
+-SQLite 
+-Github
+
+##Dataset 
+-Source:Kaggle
+-Language:SQLite
+
+##SQL Skills Demonstrated 
+- SELECT
+- WHERE
+- ORDER BY
+- GROUP BY
+- HAVING
+- COUNT()
+- AVG()
+- MAX()
+- MIN()
+- LIMIT
+- CASE WHEN
+
+##Project Structure 
+Spotify-Song-Analysis
+|- Data.csv
+|- Spotify.sql
+|- README.md
+
+##Author 
+Puja Rai 
+
+
+
+
+
