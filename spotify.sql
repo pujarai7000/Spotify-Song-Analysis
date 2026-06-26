@@ -1,3 +1,4 @@
+
 --checked  the data type of imported table 
 
 PRAGMA table_info(data);
@@ -68,9 +69,9 @@ ORDER BY  avg_energy DESC
 LIMIT 1;
 
 --Top 10 highest energy values in the dataset
-SELECT c2 as energy
+SELECT CAST( c2 AS REAL) as energy
 From data
-ORDER BY energy DESC
+ORDER BY CAST( c2 AS REAL)  DESC
 LIMIT 10;
 
 --Show 10 slowest songs by tempo
@@ -80,8 +81,8 @@ ORDER BY tempo asc
 LIMIT 10;
 
 --Classify songs as High energy, Medium energy and Low energy where high energy (>0.7),Medium energy (0.4-0.7) and low energy (<0.4)
-SElECT CAST(C2 AS REAL) AS energy_value,
-CASE 
+SElECT
+ CASE 
     WHEN CAST(C2 AS Real) > 0.7 THEN 'High_energy'
     WHEN CAST(c2 AS Real) >0.4 and CAST(C2 AS REAL)<=0.7 THEN '	Medium_energy'
     ELSE 'Low_Energy'
@@ -116,7 +117,7 @@ GROUP BY keys
 HAVING COUNT(*)>10
 
 --Show keys whose average danceability is above 0.70
-SELECt c2 as keys,AVG(CAST(c1 AS REAL))as avg_danceability 
+SELECt c3  as keys,AVG(CAST(c1 AS REAL))as avg_danceability 
  FROM data 
  GROUP BY keys
  HAVING  AVG(CAST(c1 AS REAL)) > 0.70;
@@ -151,3 +152,9 @@ CASE WHEN  CAST(C2 as REAL) >
  ELSE 'Below_avg_energy'
  END AS energy_status
  FROM data;
+ 
+-- Window Function 
+
+-- Show each song's energy along with the oevrall average energy 
+SELECT c2  ,AVG(CAST (c2 AS REAL)) OVER() as avg_energy
+FROM data;
