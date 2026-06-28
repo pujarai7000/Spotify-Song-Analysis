@@ -158,3 +158,9 @@ CASE WHEN  CAST(C2 as REAL) >
 -- Show each song's energy along with the oevrall average energy 
 SELECT c2  ,AVG(CAST (c2 AS REAL)) OVER() as avg_energy
 FROM data;
+
+-- number all songs from highest to lowest energy 
+SELECT ROW_NUMBER() OVER(ORDER BY (CAST (C2 as Real) )DESC) AS number,
+CAST (c2 as real) as energy
+FROM data 
+ORDER BY energy DESC;
