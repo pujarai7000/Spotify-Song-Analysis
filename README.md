@@ -30,6 +30,9 @@ questions using SQL  queries and demonstrates skills in filtering, aggregation,s
   -OVER()
   -ROW_NUMBER()
   -RANK()
+  -DENSE RANK()
+  -PARTITION BY ()
+  -COUNT() OVER()
   
 
 ##Project Structure 
