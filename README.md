@@ -26,6 +26,11 @@ questions using SQL  queries and demonstrates skills in filtering, aggregation,s
 - MIN()
 - LIMIT
 - CASE WHEN
+- BASIC WINDOWS FUNCTION
+  -OVER()
+  -ROW_NUMBER()
+  -RANK()
+  
 
 ##Project Structure 
 Spotify-Song-Analysis
