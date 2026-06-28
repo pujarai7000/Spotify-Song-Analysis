@@ -1,9 +1,6 @@
 
 --checked  the data type of imported table 
-
 PRAGMA table_info(data);
-
-
 
 --How many songs are in the dataset ?
 Select COUNT(*)
@@ -164,3 +161,8 @@ SELECT ROW_NUMBER() OVER(ORDER BY (CAST (C2 as Real) )DESC) AS number,
 CAST (c2 as real) as energy
 FROM data 
 ORDER BY energy DESC;
+
+-- Rank songs based on energy 
+SELECT  RANK() OVER(ORDER BY (CAST(C2 AS REAL)) DESC) AS rank,
+CASt(c2 as REAL) as energy      
+From data ;
