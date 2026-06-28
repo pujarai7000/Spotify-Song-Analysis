@@ -166,3 +166,19 @@ ORDER BY energy DESC;
 SELECT  RANK() OVER(ORDER BY (CAST(C2 AS REAL)) DESC) AS rank,
 CASt(c2 as REAL) as energy      
 From data ;
+
+--Rank songs based on danceability 
+SELECT DENSE_RANK() OVER(ORDER BY CAST(C1 AS REAL)DESC) as rank ,
+       CAST(C1 as Real) as danceability 
+FROM data;
+
+--Rank songs within each musical key based on energy 
+SELECT RANK()OVER (PARTITION BY c3 ORDER BY CAST(c2 as REAL) DESc ) as rank ,
+       CAST(c3 as REAL) as keys,
+       CAST(C2 AS REAL) as energy 
+FROM data ;
+
+--Display every song together with the total number of songs in the dataset 
+SELECT CAST(c2 as Real) as energy ,COUNT() OVER() as total_song
+FROM data ;
+       
