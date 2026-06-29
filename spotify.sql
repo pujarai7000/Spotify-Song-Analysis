@@ -181,4 +181,8 @@ FROM data ;
 --Display every song together with the total number of songs in the dataset 
 SELECT CAST(c2 as Real) as energy ,COUNT() OVER() as total_song
 FROM data ;
+
+--Display each song's tempo together with the average tempo 
+SELECT CAST(C11 AS REAL) AS tempo, AVG(CAST(c11 as REAL))OVER() as avg_tempo 
+FROM data ;
        
