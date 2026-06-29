@@ -193,4 +193,9 @@ FRom data;
 --Display each song's key, tempo, and a running total of tempo within each key, ordered by tempo.
 SELECT CAST(C3 AS REAL) as keys , CAST(C11 AS REAL) as tempo ,SUM(CAST(C11 AS REAL)) OVER(PARTITION BY(CAST(C3 AS REAL))ORDER BY (CAST(C11 AS REAL))) AS Total_tempo
 From data;
+
+--Compare a song's energy with the previous song's energy 
+SELECT CAST(C2 AS REAL),LAG(CAST (c2 as Real) ) OVER(ORDER BY (CAST(C2 AS REAL) )) as previous_energy 
+FRom data;
+
        
