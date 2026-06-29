@@ -166,7 +166,7 @@ ORDER BY energy DESC;
 SELECT  RANK() OVER(ORDER BY (CAST(C2 AS REAL)) DESC) AS rank,
 CASt(c2 as REAL) as energy      
 From data ;
-
+   
 --Rank songs based on danceability 
 SELECT DENSE_RANK() OVER(ORDER BY CAST(C1 AS REAL)DESC) as rank ,
        CAST(C1 as Real) as danceability 
@@ -185,4 +185,12 @@ FROM data ;
 --Display each song's tempo together with the average tempo 
 SELECT CAST(C11 AS REAL) AS tempo, AVG(CAST(c11 as REAL))OVER() as avg_tempo 
 FROM data ;
+
+--Show a running total of songs when ordered by tempo 
+SELECT CAST(c11 as REAL) as tempo,COUNT(CAST(c11 AS REAL)) OVER(ORDER BY (CAST(C11 as Real))) as number  
+FRom data;
+
+--Display each song's key, tempo, and a running total of tempo within each key, ordered by tempo.
+SELECT CAST(C3 AS REAL) as keys , CAST(C11 AS REAL) as tempo ,SUM(CAST(C11 AS REAL)) OVER(PARTITION BY(CAST(C3 AS REAL))ORDER BY (CAST(C11 AS REAL))) AS Total_tempo
+From data;
        
