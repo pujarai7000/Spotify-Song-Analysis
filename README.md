@@ -33,6 +33,9 @@ questions using SQL  queries and demonstrates skills in filtering, aggregation,s
   -DENSE RANK()
   -PARTITION BY ()
   -COUNT() OVER()
+  -AVG() OVER()
+  -SUM() OVER()
+  -LAG()
   
 
 ##Project Structure 
