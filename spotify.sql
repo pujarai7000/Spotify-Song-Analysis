@@ -22,11 +22,11 @@ From data
 WHERE c14=0;
 
 --what is the average danceability of all songs?
-Select AVG(c1) 
+Select AVG(CAST(c1 AS REAL)) 
 From data;
 
 --what is the average energy of all songs ?
-Select AVG(c2) 
+Select AVG(CAST(c2 AS real)) 
 From data;
 
 --How many songs exists for each musical key ?
@@ -36,16 +36,12 @@ From data
 Group By CAST( c3 as integer) ;
 
 --What is the average danceability for liked vs disliked songs?
-DELETE FROM data
-WHERE c14='liked';
-Select  c14 as liked_status,
+Select  cast(c14 AS real) as liked_status,
        AVG(CAST (c1 as real) )as avg_danceability
 From data 
 GROUP BY c14;
 
 --What is the average energy for liked vs disliked songs?DELETE FROM data
-DELETE FROM data
-WHERE c14='liked';
 SELECT AVG(c2) as avg_energy ,c14 as liked_status
 From data
 GROUP by c14;
@@ -87,8 +83,8 @@ SElECT
  FROM data;
  
  --Count how many songs belong to each energy category 
- SElECT CAST(C2 AS REAL) AS energy_value,
-CASE 
+ SElECT 
+  CASE 
     WHEN CAST(C2 AS Real) > 0.7 THEN 'High_energy'
     WHEN CAST(c2 AS Real) >0.4 AND CAST(C2 AS REAL)<=0.7 THEN '	Medium_energy'
     ELSE 'Low_Energy'
@@ -107,14 +103,14 @@ CASE
 From data;
 
 --Show keys that have more than 10 songs 
-SELECt CAST(c3 AS REAL) as keys,
+SELECT CAST(c3 AS REAL) as keys,
        COUNT(*) AS Total_songs
 FROM data
 GROUP BY keys
-HAVING COUNT(*)>10
+HAVING COUNT(*)>10;
 
 --Show keys whose average danceability is above 0.70
-SELECt c3  as keys,AVG(CAST(c1 AS REAL))as avg_danceability 
+SELECT c3  as keys,AVG(CAST(c1 AS REAL))as avg_danceability 
  FROM data 
  GROUP BY keys
  HAVING  AVG(CAST(c1 AS REAL)) > 0.70;
