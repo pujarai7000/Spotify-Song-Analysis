@@ -36,6 +36,10 @@ questions using SQL  queries and demonstrates skills in filtering, aggregation,s
   -AVG() OVER()
   -SUM() OVER()
   -LAG()
+  -LEAD()
+  -MAX OVER()
+  -MIN OVER()
+
   
 
 ##Project Structure 
