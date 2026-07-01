@@ -205,7 +205,7 @@ From data;
 --Display each song with the highest and lowest energy in the dataset 
 SELECT CAST(C2 AS rEAL) AS energy , MAX(CAST(C2 AS REAL)) OVER() AS maximum_energy , 
 MIN(CAST(C2 AS REAL)) OVER( ) AS minimum_energy 
-FROM data
+FROM data;
 
 
        
