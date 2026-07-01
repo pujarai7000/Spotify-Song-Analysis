@@ -12,21 +12,28 @@ questions using SQL  queries and demonstrates skills in filtering, aggregation,s
 
 ##Dataset 
 -Source:Kaggle
--Language:SQLite
+-Database:SQLite
 
 ##SQL Skills Demonstrated 
+
+###BASIC SQL
 - SELECT
 - WHERE
 - ORDER BY
 - GROUP BY
 - HAVING
+
+###Aggregate Functions
 - COUNT()
 - AVG()
 - MAX()
 - MIN()
 - LIMIT
+- 
+###Conditional Logic
 - CASE WHEN
-- BASIC WINDOWS FUNCTION
+  
+###WINDOWS FUNCTION
   -OVER()
   -ROW_NUMBER()
   -RANK()
